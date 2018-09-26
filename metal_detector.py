@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
+#need install RaspberryJuice plugins (Spigot/Bukkit)
+
 from mcpi.minecraft import Minecraft
 
 import time
