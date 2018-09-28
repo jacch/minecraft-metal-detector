@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 #need install RaspberryJuice plugins (Spigot/Bukkit)
-
 from mcpi.minecraft import Minecraft
-
 import time
-mc = Minecraft.create('192.168.1.113',4713)
+
+serverip='192.168.1.113'
+accountid='mc_usersname' 
+
+mc = Minecraft.create(serverip)
 
 class mic:
     x=0
@@ -28,19 +30,7 @@ class mic:
         p=mc.getBlockWithData(x,y,z)
         return p
 
-
-    def find_item(self,item):
-        result=0
-        for xx in range(0,10+1):
-            for zz in range(0,10+1):
-              for yy in range(0,5):
-                block=mc.getblockinfo(self.x+xx-5,self.y+yy,self.z+zz-5)
-                if block.id==item:
-                    result =1
-        if result==1:
-            return True
-        else:
-            return False
+ 
 
     def find_item1(self,item):
         result=0
@@ -51,11 +41,15 @@ class mic:
             if item.get(y)!= None:
                 strs=strs+" "+item.get(y)
                 result =1
-                
-                
+             
+            if result==1:
+                mc.postToChat(strs)
+                return strs
+            else:
+                return "None"
+   
                 
 
-accountid='jacch' 
 
 m=mic()
 m.playerid(accountid)
